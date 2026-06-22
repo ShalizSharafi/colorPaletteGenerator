@@ -27,8 +27,24 @@
        }
 
        .spanSpread{
-              @apply w-full p-5 md:h-full md:w-10 grow flex items-center justify-center duration-500 hover:grow-5 hover:py-10 md:hover:py-5 border ;
+              @apply w-full p-5 md:h-full md:w-10 grow flex items-center justify-center duration-500 hover:grow-5 hover:py-14 md:hover:py-5  cursor-pointer relative;
        }
+
+       .colorCode{
+             @apply text-white text-shadow-2xs shadow-olive-200 text-sm uppercase hidden 
+       }
+
+       .btn{
+              @apply w-5 h-5  md:w-10 md:h-10 rounded-full bg-gray-400/75 flex items-center justify-center absolute
+              -bottom-2.5 left-[calc(50%-10px)] 
+              md:-left-5  z-10 md:top-[calc(50%-20px)]
+       }
+
+       .fade{
+             @apply !importantbg-gray-400;
+       }
+
+       
 }
 
 @theme{
