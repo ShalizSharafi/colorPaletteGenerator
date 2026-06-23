@@ -27,11 +27,11 @@
        }
 
        .spanSpread{
-              @apply w-full p-4 md:h-full md:w-10 grow flex items-center justify-center duration-500 hover:grow-5 hover:py-14 md:hover:py-5  cursor-pointer relative;
+              @apply w-full p-6 md:p-4 md:h-full md:w-10 grow flex items-center content-center  justify-center duration-500 hover:grow-5 hover:py-14 md:hover:py-5 flex-wrap cursor-pointer relative gap-5;
        }
 
        .colorCode{
-             @apply text-white text-shadow-2xs shadow-olive-200 text-sm uppercase hidden 
+             @apply text-white text-shadow-2xs shadow-olive-200 text-sm  hidden order-2
        }
 
        .btn{
@@ -39,12 +39,14 @@
               -bottom-2.5 left-[calc(50%-10px)] 
               md:-left-5  z-10 md:top-[calc(50%-20px)]
        }
-
-       .fade{
-             @apply !importantbg-gray-400;
+       .refreshBtn{
+              @apply w-5 md:w-full  flex items-center justify-center order-1 *:hover:stroke-gray-500
+             
        }
 
-       
+       .lockBtn{
+                @apply w-5 md:w-full  flex items-center justify-center order-3 *:hover:stroke-gray-500
+       }
 }
 
 @theme{

@@ -15,13 +15,22 @@ span.forEach((val,i)=>{
        //set color
        colorSet(val)
         //set color
-        // circle
-      if(i == 0 ) return
-        addCircle(val)
-       /// circle
-       //copy to cipborad
+          //copy to cipborad
        addToClipboard(val)
        //copy to cipborad
+       //referesh btn
+       refreshBtn(val)
+         //referesh btn
+       //add lock btn
+       lockColor(val)
+       //add lock btn
+
+          // circle
+        if(i == 0 ) return
+        addCircle(val)
+       /// circle     
+
+       
 
 })
 
@@ -31,6 +40,66 @@ function colorSet(span){
        let spanColor = randColor()
        span.style.backgroundColor=spanColor
        span.children[0].innerText=spanColor
+}
+
+   //refresh button
+function refreshBtn(span){
+       let refresh = document.createElement('i')
+       refresh.classList.add('refreshBtn')
+       refresh.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+</svg>
+`
+       span.addEventListener('mouseenter',()=>{
+              span.appendChild(refresh)
+       })
+       span.addEventListener('mouseleave',()=>{
+              refresh.remove()
+       })
+       //refresh button
+      
+       //click on refresh btn to generate a new color for that specific span
+        let flag = 1
+       refresh.addEventListener('click',(e)=>{
+              let temp = span.getAttribute('data-status')
+              if(temp == 'locked') return
+              if(flag<5){
+                     e.stopPropagation()
+                   colorSet(span)
+                   flag++
+                return
+              }
+       })
+       //click on refresh btn to generate a new color for that specific span
+}
+///locking the color
+function lockColor(span){
+       let lock = document.createElement('i')
+       lock.classList.add('lockBtn')
+       lock.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>`
+       span.addEventListener('mouseenter',()=>{
+              span.appendChild(lock)
+       })
+       span.addEventListener('mouseleave',()=>{
+              lock.remove()
+       })
+
+       let flag = true
+       lock.addEventListener('click',(e)=>{
+              e.stopPropagation()
+              if(flag){
+                    lock.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>`
+                     span.setAttribute('data-status','locked')
+              }else{
+                      lock.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>`
+  span.setAttribute('data-status','unlocked')
+              }
+              flag = !flag
+       })
+
 }
 
 function addCircle(span){
@@ -46,6 +115,7 @@ function addCircle(span){
        })
         addBtn.addEventListener('click',(e)=>{
               e.stopPropagation()
+              ///create new spans 
               if(flag < 5){
               let newSpan = document.createElement('span')
               newSpan.classList.add('spanSpread')
@@ -63,6 +133,8 @@ function addCircle(span){
               colorBox.appendChild(newSpan)
               addToClipboard(newSpan)
               addCircle(newSpan)
+              refreshBtn(newSpan)
+              lockColor(newSpan)
               flag++
               return
               }
@@ -75,13 +147,14 @@ function addToClipboard(span){
               let colorCode = e.currentTarget.children[0].innerText
               navigator.clipboard.writeText(colorCode)
              setTimeout(() => {
-               alert('code coppied to the clipboard')
+               alert(colorCode +' coppied to the clipboard')
              }, 100);
        })
 }
 
 
-/////popUp
+
+/////popUp////////////////////////////////////////////////////////////////////////////////
 hideBtn.addEventListener('click',()=>{
        popUpWall.style.display='flex'
        setTimeout(() => {
