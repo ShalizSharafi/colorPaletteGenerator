@@ -31,7 +31,7 @@
        }
 
        .colorCode{
-             @apply text-white text-shadow-2xs shadow-olive-200 text-sm  hidden order-2
+             @apply text-white text-shadow-2xs shadow-olive-200 text-sm  hidden order-2  hover:text-shadow-[1px_1px_3px] duration-300 hover:text-shadow-black
        }
 
        .btn{
@@ -40,16 +40,21 @@
               md:-left-5  z-10 md:top-[calc(50%-20px)]
        }
        .refreshBtn{
-              @apply w-5 md:w-full  flex items-center justify-center order-1 *:hover:stroke-gray-500
+              @apply w-5 md:w-full  flex items-center justify-center order-1 *:hover:stroke-gray-500 duration-300
              
        }
 
        .lockBtn{
-                @apply w-5 md:w-full  flex items-center justify-center order-3 *:hover:stroke-gray-500
+                @apply w-5 md:w-full  flex items-center justify-center order-3 *:hover:stroke-gray-500 duration-300
        }
 }
 
 @theme{
        --color-blue: #2563eb;
+       --animate-rotate: rotate 10s linear;
+
+       @keyframes rotate{
+              to{transform:rotate(360deg)}
+       }
 }
 
