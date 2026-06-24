@@ -20,7 +20,8 @@
 
 @layer components{
        .link{
-              @apply w-fit px-2 py-1 rounded-[5px] flex items-center justify-between gap-1 duration-500 hover:bg-gray-500/30 text-[16px] font-normal text-black border border-white *:capitalize
+              @apply w-full sm:w-fit px-2 py-1 rounded-[5px] flex items-center justify-between gap-1 duration-500 hover:bg-gray-500/30 text-[16px] font-normal text-black border border-white *:capitalize
+               cursor-pointer 
        }
        .headerIcon{
               @apply w-8 h-8 justify-center items-center flex hover:bg-gray-500/25 duration-500 rounded-[5px] cursor-pointer
@@ -31,7 +32,7 @@
        }
 
        .colorCode{
-             @apply text-white text-shadow-2xs shadow-olive-200 text-sm  hidden order-2  hover:text-shadow-[1px_1px_3px] duration-300 hover:text-shadow-black
+             @apply text-white text-shadow-2xs shadow-olive-200 text-sm  hidden order-2  hover:text-shadow-[1px_1px_3px] duration-300 hover:text-shadow-black  
        }
 
        .btn{
@@ -49,7 +50,11 @@
        }
 
        .deleteBtn{
-              @apply  w-5 md:w-full  flex items-center justify-center order-3 *:hover:stroke-gray-500 duration-300 hover:animate-pulse
+              @apply  w-5 md:w-full  flex items-center justify-center order-4 *:hover:stroke-gray-500 duration-300 hover:animate-pulse
+       }
+
+       .copyBtn {
+              @apply w-5 md:w-full  flex items-center justify-center  *:hover:stroke-gray-500 duration-300 hover:animate-pulse order-5
        }
 }
 

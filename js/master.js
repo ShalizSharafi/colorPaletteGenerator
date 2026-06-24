@@ -7,6 +7,12 @@ const popUpWall = document.querySelector('.popUpWall')
 const popUp = document.querySelector('.popUp')
 const hideBtn = document.querySelector('.hideBtn')
 const closeBtn = document.querySelector('.closeBtn')
+const regenerate = document.querySelector('.regenerate')
+const add = document.querySelector('.add')
+const counter = document.querySelector('.counter')
+
+
+
 
 const rand = (max)=>Math.floor(Math.random()*max)
 const randColor = ()=>{return `rgb(${rand(256)},${rand(256)},${rand(256)})`}
@@ -27,13 +33,13 @@ span.forEach((val,i)=>{
        //trash button//
        trashBtn(val)
        //trash button//
+       //copy btn//
+       copyButton(val)
+       //copy btn
           // circle
         if(i == 0 ) return
         addCircle(val)
        /// circle     
-
-       
-
 })
 
 //setting random colors//
@@ -43,8 +49,9 @@ function colorSet(span){
        span.style.backgroundColor=spanColor
        span.children[0].innerText=spanColor
 }
+//setting random colors//
 
-   //refresh button
+   //refresh button for each span
 function refreshBtn(span){
        let refresh = document.createElement('i')
        refresh.classList.add('refreshBtn')
@@ -74,6 +81,7 @@ function refreshBtn(span){
        })
        //click on refresh btn to generate a new color for that specific span
 }
+//refresh for each span
 ///locking the color
 function lockColor(span){
        let lock = document.createElement('i')
@@ -103,7 +111,8 @@ function lockColor(span){
        })
 
 }
-
+////locking the color
+////delete btn
 let deleteFlag = 0
 function trashBtn(span){
        let deleteBtn = document.createElement('i')
@@ -131,7 +140,8 @@ function trashBtn(span){
        alert('color deletion exceeded!')
      })
 }
-
+////delete btn
+///// circle btn
 function addCircle(span){
        let addBtn = document.createElement('span')
        addBtn.classList.add('btn')
@@ -147,7 +157,63 @@ function addCircle(span){
               e.stopPropagation()
               ///create new spans 
               if(flag < 5){
-              let newSpan = document.createElement('span')
+              newSpanGenerator()
+              counter.innerText=`${flag}/4 added`
+              flag++
+              return
+              }
+              alert('you are no longer able to add new colors to your palette, try to delete a color from your palette to add more')
+              counter.innerText = null
+              counter.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="blue" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+</svg>
+`
+       })
+ 
+}
+///////// circle btn
+
+function addToClipboard(span){
+       span.addEventListener('click',(e)=>{
+              let colorCode = e.currentTarget.children[0].innerText
+              navigator.clipboard.writeText(colorCode)
+             setTimeout(() => {
+               alert(colorCode +' coppied to the clipboard')
+             }, 100);
+       })
+}
+
+
+///refreshing the colorpalette
+regenerate.addEventListener('click',()=>{
+       span.forEach((val)=>{
+
+       //set color
+       colorSet(val)
+        //set color
+})
+})
+//refreshing the colorpalette
+
+// add newcolorbox btn - navigation bar
+       add.addEventListener('click',()=>{
+       if(flag < 5){
+              newSpanGenerator()
+              counter.innerText=`${flag}/4 added`
+              flag++
+              return
+              }
+                 alert('you are no longer able to add new colors to your palette, try to delete a color from your palette to add more')
+                 counter.innerText = null
+              counter.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="blue" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+</svg>
+`
+})
+// add newcolorbox btn - navigation bar
+//new span generator
+function newSpanGenerator(){
+       let newSpan = document.createElement('span')
               newSpan.classList.add('spanSpread')
               newSpan.innerHTML=`<b class="colorCode group-hover:flex"></b>`
               let spanColor = randColor()
@@ -166,26 +232,35 @@ function addCircle(span){
               refreshBtn(newSpan)
               lockColor(newSpan)
               trashBtn(newSpan)
-              flag++
-              return
-              }
-       })
- 
+              copyButton(newSpan)
 }
+//new span generator
 
-function addToClipboard(span){
-       span.addEventListener('click',(e)=>{
-              let colorCode = e.currentTarget.children[0].innerText
-              navigator.clipboard.writeText(colorCode)
-             setTimeout(() => {
-               alert(colorCode +' coppied to the clipboard')
-             }, 100);
+///copy button
+function copyButton(span){
+       let copyBtn = document.createElement('i')
+       copyBtn.classList.add('copyBtn')
+       copyBtn.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
+</svg>
+`
+
+        span.addEventListener('mouseenter',()=>{
+              span.appendChild(copyBtn)
        })
+       span.addEventListener('mouseleave',()=>{
+              copyBtn.remove()
+       })
+
+       copyBtn.addEventListener('click',()=>{
+              e.stopPropagation()
+              addToClipboard(sapn)
+       })
+       
 }
+///copy button
 
-
-
-/////popUp////////////////////////////////////////////////////////////////////////////////
+/////popUp///////////////////////////////////////////////////////////////////////////////////////////////
 hideBtn.addEventListener('click',()=>{
        popUpWall.style.display='flex'
        setTimeout(() => {
@@ -203,3 +278,8 @@ popUpWall.addEventListener('click',()=>{
        popUp.style.display='none'
 })
 /////popUp
+
+
+/////hamburgur menu
+
+/////hamburgur menu
