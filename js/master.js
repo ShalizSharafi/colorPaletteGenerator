@@ -113,7 +113,7 @@ function lockColor(span){
 }
 ////locking the color
 ////delete btn
-let deleteFlag = 0
+let deleteFlag = 1
 function trashBtn(span){
        let deleteBtn = document.createElement('i')
        deleteBtn.classList.add('deleteBtn')
@@ -135,6 +135,10 @@ function trashBtn(span){
        if(deleteFlag < 4){
               span.remove()
               deleteFlag++
+              //new
+              if(flag > 0) flag--
+               counter.innerText=`${flag}/5 added`
+               //new
               return
        }
        alert('color deletion exceeded!')
@@ -158,8 +162,8 @@ function addCircle(span){
               ///create new spans 
               if(flag < 5){
               newSpanGenerator()
-              counter.innerText=`${flag}/4 added`
               flag++
+              counter.innerText=`${flag}/5 added`
               return
               }
               alert('you are no longer able to add new colors to your palette, try to delete a color from your palette to add more')
@@ -186,12 +190,7 @@ function addToClipboard(span){
 
 ///refreshing the colorpalette
 regenerate.addEventListener('click',()=>{
-       span.forEach((val)=>{
-
-       //set color
-       colorSet(val)
-        //set color
-})
+   location.reload()
 })
 //refreshing the colorpalette
 
@@ -199,8 +198,8 @@ regenerate.addEventListener('click',()=>{
        add.addEventListener('click',()=>{
        if(flag < 5){
               newSpanGenerator()
-              counter.innerText=`${flag}/4 added`
               flag++
+              counter.innerText=`${flag}/5 added`
               return
               }
                  alert('you are no longer able to add new colors to your palette, try to delete a color from your palette to add more')
