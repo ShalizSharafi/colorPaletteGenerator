@@ -37,19 +37,19 @@
        .btn{
               @apply w-5 h-5  md:w-10 md:h-10 rounded-full bg-gray-500/75 flex items-center justify-center absolute
               -bottom-2.5 left-[calc(50%-10px)] 
-              md:-left-5  z-10 md:top-[calc(50%-20px)]
+              md:-left-5  z-10 md:top-[calc(50%-20px)] hover:bg-blue/85 duration-200 hover:scale-90
        }
        .refreshBtn{
-              @apply w-5 md:w-full  flex items-center justify-center order-1 *:hover:stroke-gray-500 duration-300
+              @apply w-5 md:w-full  flex items-center justify-center order-1 *:hover:stroke-gray-500 duration-300 hover:animate-spin
              
        }
 
        .lockBtn{
-                @apply w-5 md:w-full  flex items-center justify-center order-3 *:hover:stroke-gray-500 duration-300
+                @apply w-5 md:w-full  flex items-center justify-center order-3 *:hover:stroke-gray-500 duration-300 hover:animate-bounce
        }
 
        .deleteBtn{
-              @apply  w-5 md:w-full  flex items-center justify-center order-3 *:hover:stroke-gray-500 duration-300
+              @apply  w-5 md:w-full  flex items-center justify-center order-3 *:hover:stroke-gray-500 duration-300 hover:animate-pulse
        }
 }
 
