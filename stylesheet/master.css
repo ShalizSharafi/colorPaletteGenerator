@@ -47,6 +47,10 @@
        .lockBtn{
                 @apply w-5 md:w-full  flex items-center justify-center order-3 *:hover:stroke-gray-500 duration-300
        }
+
+       .deleteBtn{
+              @apply  w-5 md:w-full  flex items-center justify-center order-3 *:hover:stroke-gray-500 duration-300
+       }
 }
 
 @theme{
