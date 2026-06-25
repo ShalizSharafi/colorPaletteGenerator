@@ -9,7 +9,11 @@
        body{
               font-family: Inter;
        }
-       
+       h1{
+              @apply text-start
+              text-[5vw] md:text-[3vw]
+              font-bold w-full
+       }
 }
 
 @layer utilities{
@@ -32,7 +36,7 @@
        }
 
        .colorCode{
-             @apply text-white text-shadow-2xs shadow-olive-200 text-sm  hidden order-2  hover:text-shadow-[1px_1px_3px] duration-300 hover:text-shadow-black  
+             @apply text-white text-shadow-2xs shadow-olive-200 text-sm  hidden order-2  hover:text-shadow-[1px_1px_3px] duration-300 hover:text-shadow-black  cursor-pointer
        }
 
        .btn{
@@ -54,8 +58,24 @@
        }
 
        .copyBtn {
-              @apply w-5 md:w-full  flex items-center justify-center  *:hover:stroke-gray-500 duration-300 hover:animate-pulse order-5
+              @apply w-5 md:w-full  flex items-center justify-center  *:hover:stroke-gray-500 duration-300 hover:animate-pulse order-5 
        }
+
+       .card{
+              @apply w-full sm:w-1/2 xl:w-1/3 flex flex-wrap p-10 sm:p-5 md:p-8 lg:p-10 *:nth-[1]:h-37.5   *:w-full gap-2.5 *:rounded-[5px] 
+       }
+       .cardColors{
+              @apply h-37.5 w-full rounded-[5px] flex overflow-hidden 
+       }
+       .cardSpan{
+              @apply w-5 grow hover:grow-6 duration-500  flex justify-center items-center cursor-pointer
+              
+       }
+       .cardDetails{
+              @apply w-full flex justify-between items-center  shadow-[0.5px_0.5px_1px] shadow-gray-500 p-0.5
+       }
+
+
 }
 
 @theme{
