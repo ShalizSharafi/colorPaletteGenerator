@@ -20,8 +20,10 @@ const cardColors = document.querySelectorAll('.cardColors')
 const trendSec = document.querySelector('.trend')
 const trendCounter = document.querySelector('.trendCounter')
 
-
-
+const save = document.querySelector('.save')
+const viewBoard = document.querySelector('.viewBoard')
+const closeView = document.querySelector('.closeView')
+const viewbtn = document.querySelector('.viewbtn')
 
 const rand = (max)=>Math.floor(Math.random()*max)
 const randColor = ()=>{return `rgb(${rand(256)},${rand(256)},${rand(256)})`}
@@ -326,7 +328,7 @@ cardSpan.forEach((val,i)=>{
        addToClipboard(cardSpan)
        cardSpan.addEventListener('click',(e)=>{
               let temp = e.currentTarget.children[0].innerText
-              cardSpan.parentElement.parentElement.children[1].children[0].children[0].children[0].innerText = temp
+              cardSpan.parentElement.parentElement.children[1].children[0].children[0].children[0].innerText ='hex: ' +temp
               cardSpan.parentElement.parentElement.children[1].children[0].children[0].children[0].style.color = `#${spanColor}`
        })
        }
@@ -409,3 +411,14 @@ cardSpan.forEach((val,i)=>{
 /////trend secton
 
 
+//////////////save and view
+viewbtn.addEventListener('click',(e)=>{
+    viewBoard.style.right='0'
+})
+
+closeView.addEventListener('click',(e)=>{
+       viewBoard.style.right='-100%'
+})
+
+
+//////////////save and view
