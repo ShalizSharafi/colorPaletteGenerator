@@ -24,6 +24,7 @@ const save = document.querySelector('.save')
 const viewBoard = document.querySelector('.viewBoard')
 const closeView = document.querySelector('.closeView')
 const viewbtn = document.querySelector('.viewbtn')
+const wall = document.querySelector('.wall')
 
 const rand = (max)=>Math.floor(Math.random()*max)
 const randColor = ()=>{return `rgb(${rand(256)},${rand(256)},${rand(256)})`}
@@ -418,7 +419,69 @@ viewbtn.addEventListener('click',(e)=>{
 
 closeView.addEventListener('click',(e)=>{
        viewBoard.style.right='-100%'
+
 })
 
+// SAVE /////////////////////////////   
 
+       save.addEventListener('click',()=>{
+              let savedPalette = document.createElement('div')
+              savedPalette.classList.add('card')
+              savedPalette.innerHTML =`<div class="cardColors">
+                                   <span class="cardSpan group">
+                                          <b class="colorCode group-hover:flex "></b>
+                                   </span>
+                                   <span class="cardSpan group">
+                                          <b class="colorCode group-hover:flex "></b>
+                                   </span>
+                                   <span class="cardSpan group">
+                                          <b class="colorCode group-hover:flex "></b>
+                                   </span>
+                                   <span class="cardSpan group">
+                                          <b class="colorCode group-hover:flex "></b>
+                                   </span>
+                                   <span class="cardSpan group">
+                                          <b class="colorCode group-hover:flex "></b>
+                                   </span>
+                                   <span class="cardSpan group">
+                                          <b class="colorCode group-hover:flex "></b>
+                                   </span>
+                                    <span class="cardSpan group">
+                                          <b class="colorCode group-hover:flex "></b>
+                                   </span>
+                                    <span class="cardSpan group">
+                                          <b class="colorCode group-hover:flex "></b>
+                                   </span>
+                                    <span class="cardSpan group">
+                                          <b class="colorCode group-hover:flex "></b>
+                                   </span>
+                            </div>
+                            <div class="cardDetails">
+                                   <span class="flex items-center justify-start">
+                            <a class="link pasteColor">
+                            <span class="text-blue font-bold"></span>
+                     </a> 
+                     </span>
+                                 <div class="flex items-center justify-end">
+                                    <span class="headerIcon">
+                            <img src="images/eye-line.png" alt="" class="w-1/2 h-1/2 object-cover">
+                     </span> 
+                     <span class="headerIcon">
+                            <img src="images/save-line.png" alt="" class="w-1/2 h-1/2 object-cover">
+                     </span>
+
+                                 </div>
+                            </div>`
+                            const cardColors = savedPalette.querySelector('.cardColors')
+                            cardColors.classList.add('cardShadow')
+                            const cardSpan = savedPalette.querySelectorAll('.cardColors>.cardSpan')
+                            wall.appendChild(savedPalette)
+                           span.forEach((val,i)=>{
+                            let spanBackColor = val.style.backgroundColor
+                            cardSpan[i].style.backgroundColor +=spanBackColor
+                     
+                           })
+
+
+       })
 //////////////save and view

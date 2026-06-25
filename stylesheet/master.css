@@ -69,12 +69,13 @@
        }
        .cardSpan{
               @apply w-5 grow hover:grow-6 duration-500  flex justify-center items-center cursor-pointer
-              
        }
        .cardDetails{
               @apply w-full flex justify-between items-center  shadow-[0.5px_0.5px_1px] shadow-gray-500 p-0.5
        }
-
+       .cardShadow{
+              @apply shadow-[1px_1px_3px] shadow-gray-500
+       }
 
 }
 
